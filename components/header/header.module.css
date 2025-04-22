@@ -1,0 +1,50 @@
+.header {
+	width: 100%;
+	position: relative;
+	z-index: 10;
+	border-bottom: none;
+
+	& .header__container {
+		width: 90%;
+		max-width: 1450px;
+		padding: 1.7rem 0;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+
+		& div:first-child {
+			width: 25%;
+		}
+
+		& div {
+			width: 75%;
+		}
+
+		& div:last-child {
+			width: auto;
+			margin-left: auto;
+			margin-top: auto;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.header {
+		& .header__container {
+			flex-wrap: nowrap;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+			& div:first-child,
+			& div {
+				width: auto;
+			}
+
+			& div:last-child {
+				margin-left: 0;
+				margin-top: 0;
+			}
+		}
+	}
+}

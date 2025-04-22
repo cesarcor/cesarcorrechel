@@ -1,0 +1,11 @@
+.navigation {
+	margin: 0 auto;
+}
+
+.navigation__list {
+	display: flex;
+	& li {
+		display: inline-block;
+		margin: 0 0.9rem;
+	}
+}

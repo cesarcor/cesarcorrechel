@@ -1,0 +1,14 @@
+.hero__graphic {
+	position: absolute;
+	top: -800px;
+	left: -1000px;
+	z-index: -1;
+}
+
+.hero__orbit_img {
+	top: 0;
+	left: 0;
+	width: 95%;
+	height: 95%;
+	opacity: 0.5;
+}
