@@ -1,9 +1,16 @@
-import { Libre_Bodoni } from 'next/font/google';
+import { Libre_Bodoni, Poppins } from 'next/font/google';
 import './globals.css';
 
 const LibreBodoni = Libre_Bodoni({
-	variable: '--font-libre-bodoni',
 	subsets: ['latin'],
+	weight: ['700'],
+	variable: '--font-libre-bodoni',
+});
+
+const PoppinsFont = Poppins({
+	subsets: ['latin'],
+	weight: ['300', '500'],
+	variable: '--font-poppins',
 });
 
 export const metadata = {
@@ -14,7 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<body className={`${LibreBodoni.variable}`}>{children}</body>
+			<body className={`${LibreBodoni.variable} ${PoppinsFont.variable}`}>
+				{children}
+			</body>
 		</html>
 	);
 }
