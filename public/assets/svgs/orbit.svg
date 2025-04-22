@@ -1,0 +1,13 @@
+<svg width="1559px" height="1559px" viewBox="0 0 1559 1559" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M504.5,1243 C935.005962,1243 1284,894.005962 1284,463.5 C1284,32.9940375 935.005962,-316 504.5,-316 C73.9940375,-316 -275,32.9940375 -275,463.5 C-275,894.005962 73.9940375,1243 504.5,1243 Z" id="path-u2ge29ws64-1"></path>
+        <mask id="mask-u2ge29ws64-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="1559" height="1559" fill="white">
+            <use xlink:href="#path-u2ge29ws64-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-dasharray="19">
+        <g id="MacBook-Pro-16&quot;" transform="translate(275, 316)" stroke="#7D45D3" stroke-width="4">
+            <use id="Oval" mask="url(#mask-u2ge29ws64-2)" xlink:href="#path-u2ge29ws64-1"></use>
+        </g>
+    </g>
+</svg>
