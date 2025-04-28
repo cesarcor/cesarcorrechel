@@ -1,0 +1,28 @@
+.heading_container {
+	display: flex;
+	column-gap: 20px;
+	align-items: center;
+	padding: 20px 0;
+}
+
+.custom_heading_img_container {
+	& div {
+		overflow: hidden;
+		border-radius: 50%;
+	}
+	& div img {
+		object-fit: cover;
+	}
+}
+
+.heading_small {
+	font-size: 1rem;
+	color: var(--highlightColor);
+	font-weight: 700;
+}
+
+.heading_large {
+	font-weight: 700;
+	font-size: clamp(2rem, 5vw, 3rem);
+	color: var(--white);
+}
