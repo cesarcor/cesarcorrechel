@@ -1,0 +1,35 @@
+.about_section {
+	padding: 250px 0;
+	width: 100%;
+	margin: 0 auto;
+
+	& p {
+		margin: 30px 0;
+	}
+
+	ul li {
+		margin-bottom: 15px;
+	}
+}
+
+.about_section__container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	column-gap: 25px;
+	background-color: var(--backgroundColor);
+
+	& .about_section__col1,
+	& .about_section__col2 {
+		width: 100%;
+	}
+}
+
+@media (min-width: 768px) {
+	.about_section__container {
+		& .about_section__col1,
+		& .about_section__col2 {
+			width: calc(50% - 25px);
+		}
+	}
+}
