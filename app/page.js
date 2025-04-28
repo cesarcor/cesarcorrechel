@@ -1,6 +1,8 @@
 import styles from './page.module.css';
 import { Header } from '../components/header/header.js';
 import { Hero } from '../components/hero/hero.js';
+import { About } from '../components/about/about.js';
+import { Projects } from '../components/projects/projects.js';
 
 export default function Home() {
 	return (
@@ -8,6 +10,8 @@ export default function Home() {
 			<Header />
 			<main className={styles.main}>
 				<Hero />
+				<About />
+				<Projects />
 			</main>
 		</div>
 	);
