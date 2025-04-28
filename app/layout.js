@@ -9,7 +9,7 @@ const LibreBodoni = Libre_Bodoni({
 
 const PoppinsFont = Poppins({
 	subsets: ['latin'],
-	weight: ['300', '500'],
+	weight: ['300', '500', '700'],
 	variable: '--font-poppins',
 });
 
