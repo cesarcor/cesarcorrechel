@@ -16,6 +16,11 @@
 
 		& div:first-child {
 			width: 25%;
+
+			& img {
+				width: 100%;
+				height: auto;
+			}
 		}
 
 		& div {
@@ -26,6 +31,9 @@
 			width: auto;
 			margin-left: auto;
 			margin-top: auto;
+			position: absolute;
+			right: 0;
+			top: 80px;
 		}
 	}
 }
@@ -44,6 +52,8 @@
 			& div:last-child {
 				margin-left: 0;
 				margin-top: 0;
+				position: relative;
+				top: unset;
 			}
 		}
 	}
