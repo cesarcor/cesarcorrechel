@@ -3,7 +3,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 20px 0;
+	padding: 100px 0;
 
 	& .hero__media_container,
 	& .hero__content_container {
@@ -18,7 +18,7 @@
 	& .hero__media {
 		position: absolute;
 		left: -50px;
-		top: -125px;
+		top: -80px;
 		overflow: hidden;
 		border-radius: 15px;
 
@@ -40,18 +40,26 @@
 		}
 	}
 
-	& .hero__title {
-		margin-top: 30px;
-	}
-
 	& .hero__title_highlight {
 		color: var(--highlightColor);
+	}
+
+	& h1 {
+		font-size: 15vw;
 	}
 
 	& .hero__subtitle {
 		font-size: clamp(1.2rem, 2vw, 1.5rem);
 		font-weight: 300;
 		margin: 10px 0 40px;
+	}
+}
+
+@media (min-width: 480px) {
+	.hero {
+		& h1 {
+			font-size: clamp(4rem, 5vw + 3.5rem, 12rem);
+		}
 	}
 }
 
