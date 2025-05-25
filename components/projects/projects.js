@@ -16,7 +16,7 @@ export const Projects = () => {
 			imageURL: tempProject,
 		},
 		{
-			title: 'Project 3',
+			title: 'Project 3 - Advanced Computers',
 			description: 'Description of project 3',
 			imageURL: tempProject,
 		},

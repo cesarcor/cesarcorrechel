@@ -7,8 +7,11 @@ export const Project = ({ project }) => {
 		<div className={styles.project_item}>
 			<div className={styles.project_title_container}>
 				<h4>{project.title}</h4>
+				<p>Lorem ipsum doloret et min de larus consigiani confieti</p>
+				<Button />
 			</div>
-			<div>
+
+			<div className={styles.project_img_col}>
 				<div className={styles.project_img_container}>
 					<Image
 						src={project.imageURL}
