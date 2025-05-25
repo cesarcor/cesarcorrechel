@@ -13,6 +13,7 @@
 
 	& .hero__content_container {
 		z-index: 5;
+		top: 100px;
 	}
 
 	& .hero__media {
@@ -76,6 +77,7 @@
 
 		& .hero__content_container {
 			width: 60%;
+			top: 0;
 		}
 
 		& .hero__media {
