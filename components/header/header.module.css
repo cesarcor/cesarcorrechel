@@ -15,7 +15,7 @@
 		flex-wrap: wrap;
 
 		& div:first-child {
-			width: 25%;
+			width: 20%;
 
 			& img {
 				width: 100%;
