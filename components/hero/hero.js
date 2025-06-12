@@ -18,74 +18,92 @@ export const Hero = () => {
 	const heroTitle = useRef(null);
 	const heroSubtitle = useRef(null);
 	const heroBtn = useRef(null);
+	const hasRun = useRef(false);
 
 	useGSAP(() => {
-		const tl = gsap.timeline();
+		const runIntroAnimation = () => {
+			if (hasRun.current) return;
+			hasRun.current = true;
 
-		tl.fromTo(
-			heroMedia.current,
-			{ y: '100%', autoAlpha: 0 },
-			{ y: '0%', autoAlpha: 1, duration: 1, ease: 'power3.out' }
-		)
-			.fromTo(
-				heroTitle.current,
+			const tl = gsap.timeline();
+
+			tl.fromTo(
+				heroMedia.current,
 				{ y: '100%', autoAlpha: 0 },
-				{ y: '0%', autoAlpha: 1, duration: 0.8, ease: 'power3.out' },
-				'-=0.6'
+				{ y: '0%', autoAlpha: 1, duration: 1, ease: 'power3.out' }
 			)
-			.fromTo(
-				heroSubtitle.current,
-				{ y: '20%', autoAlpha: 0 },
-				{ y: '0%', autoAlpha: 1, duration: 0.6, ease: 'power3.out' },
-				'-=0.5'
-			)
-			.fromTo(
-				heroBtn.current,
-				{ y: '20%', autoAlpha: 0 },
-				{ y: '0%', autoAlpha: 1, duration: 0.6, ease: 'power3.out' },
-				'-=0.5'
-			);
+				.fromTo(
+					heroTitle.current,
+					{ y: '100%', autoAlpha: 0 },
+					{ y: '0%', autoAlpha: 1, duration: 0.8, ease: 'power3.out' },
+					'-=0.6'
+				)
+				.fromTo(
+					heroSubtitle.current,
+					{ y: '20%', autoAlpha: 0 },
+					{ y: '0%', autoAlpha: 1, duration: 0.6, ease: 'power3.out' },
+					'-=0.5'
+				)
+				.fromTo(
+					heroBtn.current,
+					{ y: '20%', autoAlpha: 0 },
+					{ y: '0%', autoAlpha: 1, duration: 0.6, ease: 'power3.out' },
+					'-=0.5'
+				);
+		};
+
+		if (document.visibilityState === 'visible') {
+			runIntroAnimation();
+		} else {
+			const onVisible = () => {
+				if (document.visibilityState === 'visible') {
+					runIntroAnimation();
+					document.removeEventListener('visibilitychange', onVisible);
+				}
+			};
+			document.addEventListener('visibilitychange', onVisible);
+		}
 	}, []);
 
 	useGSAP(() => {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: heroRef.current,
-				start: 'top 10vh',
+				start: '-20vh top',
 				end: 'bottom top',
 				scrub: true,
 			},
 		});
 
-		tl.to(heroTitle.current, {
-			y: '-100%',
-			autoAlpha: 0,
-			ease: 'power1.inOut',
+		tl.to(heroMedia.current, {
+			y: '-150%',
+			autoAlpha: 0.3,
+			ease: 'power2.inOut',
 		})
+			.to(
+				heroTitle.current,
+				{
+					y: '-100%',
+					autoAlpha: 0,
+					ease: 'power1.inOut',
+				},
+				'<+0.2'
+			)
 			.to(
 				heroSubtitle.current,
 				{
 					y: '-100%',
 					autoAlpha: 0,
-					ease: 'power1.inOut',
+					ease: 'power2.inOut',
 				},
 				'<'
 			)
 			.to(
 				heroBtn.current,
 				{
-					y: '100%',
+					y: '110%',
 					autoAlpha: 0,
-					ease: 'power1.inOut',
-				},
-				'<'
-			)
-			.to(
-				heroMedia.current,
-				{
-					y: '-100%',
-					autoAlpha: 0.3,
-					ease: 'power1.inOut',
+					ease: 'sine.inOut',
 				},
 				'<'
 			);
