@@ -3,6 +3,7 @@
 	position: relative;
 	z-index: 10;
 	border-bottom: none;
+	visibility: hidden;
 
 	& .header__container {
 		width: 90%;
