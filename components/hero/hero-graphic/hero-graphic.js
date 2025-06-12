@@ -46,7 +46,7 @@ export const HeroGraphic = () => {
 
 	return (
 		<div className={styles.hero__graphic}>
-			<Image
+			<img
 				ref={heroGraphicImg}
 				src='/assets/svgs/orbit.svg'
 				alt='Orbit'
