@@ -8,7 +8,7 @@ import { HeroGraphic } from './hero-graphic/hero-graphic';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,13 +19,31 @@ export const Hero = () => {
 	const heroSubtitle = useRef(null);
 	const heroBtn = useRef(null);
 	const hasRun = useRef(false);
+	const scrollTriggerRef = useRef(null);
 
 	useGSAP(() => {
+		gsap.set(
+			[
+				heroMedia.current,
+				heroTitle.current,
+				heroSubtitle.current,
+				heroBtn.current,
+			],
+			{
+				y: '100%',
+				autoAlpha: 0,
+			}
+		);
+
 		const runIntroAnimation = () => {
 			if (hasRun.current) return;
 			hasRun.current = true;
 
-			const tl = gsap.timeline();
+			const tl = gsap.timeline({
+				onComplete: () => {
+					setupScrollTrigger();
+				},
+			});
 
 			tl.fromTo(
 				heroMedia.current,
@@ -52,6 +70,52 @@ export const Hero = () => {
 				);
 		};
 
+		const setupScrollTrigger = () => {
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: heroRef.current,
+					start: '-20vh top',
+					end: 'bottom top',
+					scrub: true,
+				},
+			});
+
+			scrollTriggerRef.current = tl.scrollTrigger;
+
+			tl.to(heroMedia.current, {
+				y: '-150%',
+				autoAlpha: 0.3,
+				ease: 'power1.inOut',
+			})
+				.to(
+					heroTitle.current,
+					{
+						y: '-120%',
+						autoAlpha: 0,
+						ease: 'power1.inOut',
+					},
+					'<'
+				)
+				.to(
+					heroSubtitle.current,
+					{
+						y: '-100%',
+						autoAlpha: 0,
+						ease: 'power2.inOut',
+					},
+					'<'
+				)
+				.to(
+					heroBtn.current,
+					{
+						y: '135%',
+						autoAlpha: 0,
+						ease: 'sine.inOut',
+					},
+					'<'
+				);
+		};
+
 		if (document.visibilityState === 'visible') {
 			runIntroAnimation();
 		} else {
@@ -65,58 +129,18 @@ export const Hero = () => {
 		}
 	}, []);
 
-	useGSAP(() => {
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: heroRef.current,
-				start: '-20vh top',
-				end: 'bottom top',
-				scrub: true,
-			},
-		});
-
-		tl.to(heroMedia.current, {
-			y: '-150%',
-			autoAlpha: 0.3,
-			ease: 'power2.inOut',
-		})
-			.to(
-				heroTitle.current,
-				{
-					y: '-100%',
-					autoAlpha: 0,
-					ease: 'power1.inOut',
-				},
-				'<+0.2'
-			)
-			.to(
-				heroSubtitle.current,
-				{
-					y: '-100%',
-					autoAlpha: 0,
-					ease: 'power2.inOut',
-				},
-				'<'
-			)
-			.to(
-				heroBtn.current,
-				{
-					y: '110%',
-					autoAlpha: 0,
-					ease: 'sine.inOut',
-				},
-				'<'
-			);
+	useEffect(() => {
+		return () => {
+			if (scrollTriggerRef.current) {
+				scrollTriggerRef.current.kill();
+			}
+		};
 	}, []);
 
 	return (
 		<section className={styles.hero} ref={heroRef}>
 			<div className={styles.hero__media_container}>
-				<div
-					className={styles.hero__media}
-					ref={heroMedia}
-					style={{ visibility: 'hidden' }}
-				>
+				<div className={styles.hero__media} ref={heroMedia}>
 					<Image
 						src={tempImg}
 						alt='Hero Image'
@@ -127,21 +151,13 @@ export const Hero = () => {
 				</div>
 			</div>
 			<div className={styles.hero__content_container}>
-				<h1
-					className={styles.hero__title}
-					ref={heroTitle}
-					style={{ visibility: 'hidden' }}
-				>
+				<h1 className={styles.hero__title} ref={heroTitle}>
 					Cesar <span className={styles.hero__title_highlight}>Correchel</span>
 				</h1>
-				<p
-					className={styles.hero__subtitle}
-					ref={heroSubtitle}
-					style={{ visibility: 'hidden' }}
-				>
+				<p className={styles.hero__subtitle} ref={heroSubtitle}>
 					Web Designer - Web Developer - Web Project Manager
 				</p>
-				<div ref={heroBtn} style={{ visibility: 'hidden' }}>
+				<div ref={heroBtn}>
 					<Button />
 				</div>
 				<HeroGraphic />
