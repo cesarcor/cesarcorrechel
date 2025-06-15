@@ -1,7 +1,10 @@
 .about_section {
-	padding: 250px 0 100px 0;
 	width: 100%;
+	min-height: 700px;
 	margin: 0 auto;
+	padding: 200px 0 100px 0;
+	display: flex;
+	align-items: center;
 
 	& p {
 		margin: 30px 0;
