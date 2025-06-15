@@ -25,8 +25,8 @@ export const Projects = () => {
 	return (
 		<section className={styles.projects_section}>
 			<SectionHeading
-				headingSmall='Projects'
-				headingLarge='Here are some of my recent works.'
+				heading_small='Projects'
+				heading_large='Here are some of my recent works.'
 			/>
 			<div className={styles.projects_section__content}>
 				{projectList.map((project, index) => (
