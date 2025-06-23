@@ -10,9 +10,19 @@
 	z-index: 10;
 	display: inline-block;
 
+	& .btn_arrow {
+		transition: 0.1s ease-out transform;
+		display: inline-block;
+	}
+
 	&:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		/* transform: translateY(-3px); */
+		box-shadow: 0 11px 18px rgba(0, 0, 0, 0.3);
+		transition: box-shadow 0.2s ease;
+	}
+
+	&:hover .btn_arrow {
+		transform: translate(5px);
+		transition: 0.1s ease-in transform;
 	}
 }

@@ -14,45 +14,48 @@ export const Project = ({ project }) => {
 	const project_title_ref = useRef(null);
 	const project_description_ref = useRef(null);
 
-	useGSAP(() => {
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: project_ref.current,
-				start: 'top-=50vh bottom',
-				end: 'bottom-=800vh top',
-				scrub: true,
-			},
-		});
+	useGSAP(
+		() => {
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: project_ref.current,
+					start: 'top-=50vh bottom',
+					end: 'bottom-=800vh top',
+					scrub: true,
+				},
+			});
 
-		tl.from(project_img_ref.current, {
-			scale: 0.35,
-			autoAlpha: 0.45,
-			ease: 'power1.out',
-		})
-			.from(
-				project_title_ref.current,
-				{
-					autoAlpha: 0.3,
-					ease: 'back.in',
-				},
-				'<+=0.3'
-			)
-			.from(
-				project_description_ref.current,
-				{
-					autoAlpha: 0.55,
-					ease: 'back.in',
-				},
-				'<+=0.1'
-			)
-			.to(
-				project_title_container_ref.current,
-				{
-					yPercent: -105,
-				},
-				'<'
-			);
-	}, []);
+			tl.from(project_img_ref.current, {
+				scale: 0.35,
+				autoAlpha: 0.45,
+				ease: 'power1.out',
+			})
+				.from(
+					project_title_ref.current,
+					{
+						autoAlpha: 0.3,
+						ease: 'back.in',
+					},
+					'<+=0.1'
+				)
+				.from(
+					project_description_ref.current,
+					{
+						autoAlpha: 0.55,
+						ease: 'back.in',
+					},
+					'<+=0.2'
+				)
+				.to(
+					project_title_container_ref.current,
+					{
+						yPercent: -100,
+					},
+					'<'
+				);
+		},
+		{ scope: project_ref }
+	);
 
 	return (
 		<article className={styles.project_item} ref={project_ref}>
@@ -64,7 +67,11 @@ export const Project = ({ project }) => {
 				<p ref={project_description_ref}>
 					Lorem ipsum doloret et min de larus consigiani confieti
 				</p>
-				<Button />
+				<Button
+					parentRef={project_ref}
+					scrollTriggerStart='top 50%'
+					scrollTriggerEnd='bottom 80%'
+				/>
 			</div>
 
 			<div className={styles.project_img_col}>

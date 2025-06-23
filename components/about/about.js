@@ -10,7 +10,9 @@ import { useRef } from 'react';
 
 export const About = () => {
 	const aboutRef = useRef(null);
+	const c_shape = useRef(null);
 	const firstParagraph = useRef(null);
+	const btn_container = useRef(null);
 	const secondParagraph = useRef(null);
 	const skillList = useRef(null);
 
@@ -27,25 +29,64 @@ export const About = () => {
 				},
 			});
 
-			tl.from(firstParagraph.current, {
+			gsap.from(c_shape.current, {
+				xPercent: -20,
+				opacity: 0,
+				ease: 'power2.out',
+				duration: 1.2,
+				delay: 0.4,
+				scrollTrigger: {
+					trigger: aboutRef.current,
+					start: 'top 75%',
+					end: 'bottom 55%',
+					scrub: true,
+				},
+			});
+
+			gsap.from(firstParagraph.current, {
 				xPercent: -20,
 				opacity: 0.05,
-				ease: 'power1.in',
-			}).from(
-				secondParagraph.current,
-				{
-					xPercent: 20,
-					opacity: 0.05,
-					ease: 'power1.in',
+				ease: 'power2.out',
+				duration: 1.2,
+				scrollTrigger: {
+					trigger: firstParagraph.current,
+					start: 'top 75%',
+					end: 'bottom 55%',
+					scrub: true,
 				},
-				'<'
-			);
+			});
+
+			gsap.from(btn_container.current, {
+				y: 100,
+				opacity: 0,
+				ease: 'power2.out',
+				duration: 1.2,
+				scrollTrigger: {
+					trigger: aboutRef.current,
+					start: 'top 65%',
+					end: 'bottom top',
+					scrub: true,
+				},
+			});
+
+			gsap.from(secondParagraph.current, {
+				xPercent: 20,
+				opacity: 0.05,
+				ease: 'power2.out',
+				duration: 1.2,
+				scrollTrigger: {
+					trigger: secondParagraph.current,
+					start: 'top 75%',
+					end: 'bottom 55%',
+					scrub: true,
+				},
+			});
 
 			const tl2 = gsap.timeline({
 				scrollTrigger: {
 					trigger: aboutRef.current,
-					start: 'top 60vh',
-					end: 'bottom-=800vh top',
+					start: 'top 65vh',
+					end: 'bottom-=805vh top',
 					scrub: true,
 				},
 			});
@@ -60,6 +101,8 @@ export const About = () => {
 						autoAlpha: 0,
 						stagger: 0.1,
 						ease: 'power1.out',
+						delay: index * 0.15,
+						duration: 0.6,
 					},
 					'skills+=' + index * 0.15
 				);
@@ -78,12 +121,20 @@ export const About = () => {
 				/>
 
 				<div className={styles.about_section__col1}>
+					<img
+						src='assets/svgs/c-shape.svg'
+						alt='Cesar Correchel'
+						className={styles.c_shape}
+						ref={c_shape}
+					/>
 					<p ref={firstParagraph}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
 						fringilla, velit ac laoreet accumsan, lectus quam fermentum orci,
 						accumsan congue.
 					</p>
-					<Button />
+					<div ref={btn_container} className={styles.btn_container}>
+						<Button />
+					</div>
 				</div>
 				<div className={styles.about_section__col2}>
 					<p ref={secondParagraph}>
