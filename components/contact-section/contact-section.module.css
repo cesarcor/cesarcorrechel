@@ -1,0 +1,22 @@
+.contact_section {
+	padding: 100px 10px;
+	text-align: center;
+}
+
+.contact_section h2 {
+	font-family: var(--font-libre-bodoni), serif;
+	font-weight: 700;
+}
+
+.contact_section_container {
+	margin: 0 auto;
+	max-width: 800px;
+
+	& .contact_section_svg_container {
+		margin-bottom: 30px;
+	}
+
+	& p {
+		margin: 30px 0;
+	}
+}

@@ -3,6 +3,7 @@ import { Header } from '../components/header/header.js';
 import { Hero } from '../components/hero/hero.js';
 import { About } from '../components/about/about.js';
 import { Projects } from '../components/projects/projects.js';
+import { ContactSection } from '@/components/contact-section/contact-section';
 import { Footer } from '../components/footer/footer.js';
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
 				<Hero />
 				<About />
 				<Projects />
+				<ContactSection />
 			</main>
 			<Footer />
 		</div>
