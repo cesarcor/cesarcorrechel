@@ -45,14 +45,18 @@ export const Project = ({ project }) => {
 						ease: 'back.in',
 					},
 					'<+=0.2'
-				)
-				.to(
+				);
+
+			const mm = gsap.matchMedia();
+			mm.add('(min-width: 768px)', () => {
+				tl.to(
 					project_title_container_ref.current,
 					{
 						yPercent: -100,
 					},
 					'<'
 				);
+			});
 		},
 		{ scope: project_ref }
 	);
