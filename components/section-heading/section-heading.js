@@ -26,6 +26,7 @@ export const SectionHeading = ({
 			ease: 'power1.inOut',
 			delay: 0.4,
 			y: -150,
+			duration: 3,
 			scrollTrigger: {
 				trigger: section_heading_container.current,
 				start: 'top center',
